@@ -18,38 +18,166 @@
         padding: 0;
         list-style: none;
       }
-
-      .wrap {
-        background-color: #ccc;
+      .header {
+        height: 60px;
+        background-color: #000;
         display: flex;
+        justify-content: space-between;
+      }
+      .header .tel {
+        margin: auto 20px;
+        font-size: 20px;
+        color: white;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+      }
+      .tel a {
+        color: white;
+        text-decoration: none;
+        transition: 0.5s;
+      }
+      .tel a:hover {
+        color: #fa0;
+      }
+      .header .tel img {
+        width: 15px;
+        height: 15px;
+        margin: auto 10px;
+      }
+      .header .header-link {
+        margin: auto 20px;
+      }
+      .header .icon-list img {
+        width: 25px;
+        height: 25px;
+      }
+      .navbar {
+        display: flex;
+        height: 120px;
+        /* background-color: #aaa; */
+        align-items: center;
+        justify-content: space-between;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        margin: 0 20px;
+        font-size: 50px;
+      }
+      .logo img {
+        margin: 0 20px;
+      }
+      .navbar .linklist a {
+        text-decoration: none;
+        font-size: 20px;
+        margin: 0 30px;
+      }
+      .main1 {
+        display: flex;
+        /* border: 2px solid red; */
+        background-color: #696969;
+        background-image: url(./day01作業零件/asset\ 4.jpeg);
+        background-size: cover;
+        height: 650px;
+      }
+
+      .main1 .text {
+        /* border: 2px solid orange; */
+        margin: 220px 20px;
+      }
+      .text .t1 {
+        font-size: 50px;
+        font-weight: 600;
+      }
+      .text h1 {
+        font-size: 80px;
+        color: #6af;
+      }
+      .text .t2 {
+        font-size: 25px;
+      }
+      .catbtn {
+        display: inline-block;
+        padding: 20px 40px;
+        background-color: #fa0;
+        color: #fff;
+        text-decoration: none;
+        border: 2px solid #fa0;
+        transition: 0.4s;
+        margin-top: 25px;
+      }
+      .catbtn:hover {
+        background-color: rgb(1, 9, 20);
+        border: 2px solid rgb(1, 9, 20);
+        color: white;
+      }
+      .main2 {
+        display: flex;
+      }
+
+      .main2-text {
+        margin: auto;
+      }
+      .main2-text h2 {
+        font-size: 50px;
+      }
+      .main2-text h3 {
+        font-size: 30px;
+        color: #6af;
+      }
+      .main2-text p {
+        color: #999;
+      }
+      .main3 {
+        background-color: #eee;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
-        border: 2px solid blue;
+        /* border: 2px solid blue; */
+      }
+      .card-text p {
+        color: #6af;
+      }
+      .card-text {
+        font-size: 30px;
+        text-align: center;
+        margin-top: 80px;
+        margin-bottom: 40px;
       }
       .card-list {
-        border: 2px solid red;
+        /* border: 2px solid red; */
         display: flex;
         width: 1200px;
+        margin-bottom: 60px;
       }
       .card {
-        border: 2px solid rgb(255, 0, 230);
+        /* border: 2px solid rgb(255, 0, 230); */
         width: 380px;
         margin: 10px;
         text-align: center;
-        padding-top: 500px;
+        padding-top: 420px;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
       }
       .card-1 {
         background-image: url(./day01作業零件/asset\ 5.jpeg);
-        background-size: cover;
       }
       .card-2 {
         background-image: url(./day01作業零件/asset\ 6.jpeg);
-        background-size: cover;
       }
       .card-3 {
         background-image: url(./day01作業零件/asset\ 7.jpeg);
-        background-size: cover;
       }
-      .btn {
+      .card a {
+        text-decoration: none;
+        text-align: center;
+        font-size: 40px;
+        color: white;
+      }
+      .dnbtn {
         display: inline-block;
         padding: 10px 30px;
         background-color: #fff;
@@ -58,27 +186,30 @@
         border: 2px solid #fa0;
         transition: 0.4s;
       }
-      .btn:hover {
+      .dnbtn:hover {
         background-color: #6af;
         border: 2px solid #6af;
         color: white;
       }
       .icon-list {
+        margin: 0 30px;
         display: flex;
+        align-items: center;
       }
+
       .icon-list .icon {
-        width: 25px;
-        height: 25px;
-        background-color: #aaa;
+        width: 22px;
+        height: 22px;
+        background-color: white;
         border-radius: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 0 5px;
+        margin: 0 3px;
       }
       .icon-list .icon:hover {
-        background-color: #000;
-        color: #fff;
+        background-color: #fa0;
+        color: #000;
       }
     </style>
   </head>
@@ -86,54 +217,53 @@
     <header>
       <div class="header">
         <div class="tel">
-          <img src="./day01作業零件/asset 16.svg" alt="" />
+          <a href="#"><img src="./day01作業零件/asset 16.svg" alt="" /></a>
           <p>Toll-free: <a href="">(123)456-7890</a></p>
         </div>
-        <div class="header-link">
-          <nav>
-            <a href="#"><img src="./day01作業零件/asset 15.svg" alt="" /></a>
-            <a href="#"><img src="./day01作業零件/asset 18.svg" alt="" /></a>
-            <a href="#"><img src="./day01作業零件/asset 16.svg" alt="" /></a>
-            <a href="#"><img src="./day01作業零件/asset 17.svg" alt="" /></a>
-          </nav>
+        <div class="icon-list">
+          <div class="icon"><i class="fa-brands fa-twitter"></i></div>
+          <div class="icon"><i class="fa-brands fa-facebook"></i></div>
+          <div class="icon"><i class="fa-brands fa-pinterest"></i></div>
+          <div class="icon"><i class="fa-brands fa-linkedin"></i></div>
         </div>
       </div>
-      <div class="container-link">
-        <div class="row">
-          <div class="row-img">
-            <img src="./day01作業零件/asset 0.png" alt="首頁圖片" />
-            <p>Anilove</p>
-          </div>
-          <div class="row-link">
-            <nav>
-              <a href="">Home</a>
-              <a href="">About</a>
-              <a href="">Events</a>
-              <a href="">News</a>
-              <a href="">Contacts</a>
-            </nav>
-          </div>
-          <div class="row-button">
-            <button>DONATE NOW!</button>
-          </div>
+
+      <div class="navbar">
+        <div class="logo">
+          <a href=""
+            ><img src="./day01作業零件/asset 0.png" alt="首頁圖片"
+          /></a>
+          <p>Anilove</p>
+        </div>
+        <div class="linklist">
+          <a href="#">Home</a>
+          <a href="#">About</a>
+          <a href="#">Events</a>
+          <a href="#">News</a>
+          <a href="#">Contacts</a>
+        </div>
+        <div class="btn">
+          <a href="#" class="dnbtn">DONATE NOW!</a>
         </div>
       </div>
     </header>
+
     <main>
-      <div class="main-img">
+      <div class="main1">
         <div class="text">
           <p class="t1">Animal Need</p>
           <h1>YOUR Help!</h1>
           <p class="t2">You can chip in with money & effort!</p>
-          <button>DONATE NOW</button>
+          <a href="#" class="catbtn">DONATE NOW!</a>
         </div>
-        <img src="./day01作業零件/asset 4.jpeg" alt="" />
       </div>
-      <div class="main-1">
-        <div class="main-1-img">
+
+      <!--  -->
+      <div class="main2">
+        <div class="main2-img">
           <img src="./day01作業零件/asset 1.jpeg" alt="" />
         </div>
-        <div class="main-1-text">
+        <div class="main2-text">
           <h2>About Us</h2>
           <h3>What Makes Us Care About Pets?</h3>
           <p>&nbsp</p>
@@ -150,56 +280,20 @@
             cared for every year, we hope to encourage much more pet adoptions
             to happen!
           </p>
-          <button>LEARN MORE</button>
+          <a href="#" class="catbtn">DONATE NOW!</a>
         </div>
       </div>
-      <div class="main-2">
-        <div class="main-2-text">
+      <div class="main3">
+        <div class="card-text">
           <h2>How You Can Help</h2>
           <p>There Are Countless Ways You Can Join In & Help Us!</p>
         </div>
-        <div class="main-2-img">
-          <div class="main-2-img-01">
-            <div class="img-01">
-              <img src="./day01作業零件/asset 5.jpeg" alt="" />
-            </div>
-            <div class="a-01">
-              <a href="">Volunteer</a>
-            </div>
-          </div>
-          <div class="main-2-img-02">
-            <div class="img-02">
-              <img src="./day01作業零件/asset 6.jpeg" alt="" />
-            </div>
-            <div class="a-02">
-              <a href="">Adopt</a>
-            </div>
-          </div>
-          <div class="main-2-img-03">
-            <div class="img-03">
-              <img src="./day01作業零件/asset 7.jpeg" alt="" />
-            </div>
-            <div class="a-03">
-              <a href="">Sponsor</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="wrap">
+
         <div class="card-list">
-          <div class="card card-1"><p>About</p></div>
-          <div class="card card-2"><p>About</p></div>
-          <div class="card card-3"><p>About</p></div>
+          <div class="card card-1"><a href="#">Volunteer</a></div>
+          <div class="card card-2"><a href="#">Adopt</a></div>
+          <div class="card card-3"><a href="#">Sponsor</a></div>
         </div>
-      </div>
-
-      <a href="#" class="btn">DONATE ME!</a>
-
-      <div class="icon-list">
-        <div class="icon"><i class="fa-brands fa-twitter"></i></div>
-        <div class="icon"><i class="fa-brands fa-facebook"></i></div>
-        <div class="icon"><i class="fa-brands fa-pinterest"></i></div>
-        <div class="icon"><i class="fa-brands fa-linkedin"></i></div>
       </div>
     </main>
   </body>
