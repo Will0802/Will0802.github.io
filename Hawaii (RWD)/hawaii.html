@@ -18,7 +18,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 5px 0 0;
+        padding: 20px 0 0 5px;
         border-top: 1px solid rgba(0, 0, 0, 0.12);
         margin: 3rem 0 1.5rem 0;
         box-sizing: border-box;
@@ -67,10 +67,17 @@
       .main-post .main-1 {
         margin-bottom: 2rem;
       }
+      .main-post .main-1 .icon {
+        margin-bottom: 8px;
+        font-size: 12px;
+        color: #202124;
+      }
       .main-post .main-1 .pic {
         width: 115%;
         margin-left: -8%;
         overflow: hidden;
+        font-weight: 300;
+        line-height: 12px;
       }
       .main-post .main-1 .pic img {
         width: 110%;
@@ -115,27 +122,19 @@
         margin-bottom: 8px;
         display: flex;
         align-items: center;
-      }
-      .main-post .main-2 .card1 .icon span {
-        font-weight: 500;
-        font-size: 12px;
-        line-height: 12px;
-        color: #202124;
-        margin-left: 0.5em;
-
         position: relative;
       }
-      .main-post .main-2 .card4 .icon span {
+      .main-post .main-2 .card .icon span {
         font-weight: 500;
         font-size: 12px;
         line-height: 12px;
         color: #202124;
         margin-left: 0.5em;
-        white-space: nowrap;
         overflow: hidden;
-        position: relative;
+        white-space: nowrap;
       }
-      .main-post .main-2 .card4 .icon span::after {
+
+      .main-post .main-2 .card .icon span::after {
         content: "";
         position: absolute;
         width: 60px;
@@ -154,7 +153,7 @@
       }
       .main-post .main-2 .card .pic img {
         width: 100%;
-        height: 100px;
+        height: 130px;
         border-radius: 5px;
       }
       .main-post .main-2 .card .text {
@@ -175,6 +174,14 @@
       @media screen and (min-width: 768px) {
         .main-post {
           display: flex;
+        }
+        .title h3 {
+          font-size: 26px;
+        }
+        .title h3 span {
+          display: inline-block;
+          margin-left: 10px;
+          font-size: 16px;
         }
         .main-1 {
           width: 50%;
@@ -224,6 +231,9 @@
         }
         .main-post .main-1 .pic img {
           height: 400px;
+        }
+        .main-post .main-2 .card .pic img {
+          height: 195px;
         }
       }
     </style>
@@ -333,6 +343,9 @@
         <div class="main-post">
           <div class="main-1">
             <a href="#">
+              <div class="icon">
+                <span>ジャルパック</span>
+              </div>
               <div class="pic"><img src="./img/6.jpeg" alt="" /></div>
               <div class="text">
                 <div class="text-title">
@@ -353,9 +366,7 @@
           <div class="main-2">
             <div class="card card1">
               <a href="#">
-                <div class="icon">
-                  <img src="./img/icon1.svg" alt="" /><span>エコ活動</span>
-                </div>
+                <div class="icon"></div>
                 <div class="pic"><img src="./img/7.jpg" alt="" /></div>
                 <div class="text">
                   <div class="text-title">
@@ -369,10 +380,7 @@
             </div>
             <div class="card card2">
               <a href="#"
-                ><div class="icon">
-                  <img src="./img/icon2.svg" alt="" />
-                  <span>イベント</span>
-                </div>
+                ><div class="icon"></div>
                 <div class="pic"><img src="./img/8.jpg" alt="" /></div>
                 <div class="text">
                   <div class="text-title">
@@ -385,8 +393,7 @@
             <div class="card card3">
               <a href="#"
                 ><div class="icon">
-                  <img src="./img/icon3.svg" alt="" />
-                  <span>その他</span>
+                  <span>オラカイ株式会社</span>
                 </div>
                 <div class="pic"><img src="./img/9.jpg" alt="" /></div>
                 <div class="text">
@@ -402,8 +409,7 @@
             <div class="card card4">
               <a href="#"
                 ><div class="icon">
-                  <img src="./img/icon4.svg" alt="" />
-                  <span>カルチャー</span>
+                  <span>ザ・リッツカールトン・レジデンス・ワイキキ</span>
                 </div>
                 <div class="pic"><img src="./img/10.jpg" alt="" /></div>
                 <div class="text">
@@ -431,6 +437,9 @@
         <div class="main-post">
           <div class="main-1">
             <a href="#">
+              <div class="icon">
+                <span>ハワイ州観光局</span>
+              </div>
               <div class="pic"><img src="./img/11.jpg" alt="" /></div>
               <div class="text">
                 <div class="text-title">
