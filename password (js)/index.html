@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>終極密碼</title>
+    <style>
+      .wrap,
+      .group {
+        width: 960px;
+        text-align: center;
+        margin: auto;
+      }
+      h1 {
+        letter-spacing: 0.3em;
+      }
+      .wrap .text p {
+        color: #f00;
+        font-size: 18px;
+      }
+      input {
+        width: 200px;
+      }
+      button {
+        font-size: 18px;
+        margin: 8px;
+        border-radius: 5px;
+      }
+      button:hover {
+        background-color: #fa0;
+      }
+      .group {
+        display: grid;
+        justify-content: center;
+        grid-template-rows: repeat(4, 100px);
+        grid-template-columns: repeat(3, 100px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>猜數字遊戲</h1>
+      <input type="text" id="guess_input" placeholder="請輸入數字" />
+      <div class="hint"></div>
+      <button id="guess_btn">猜!</button>
+      <button id="restart_btn">重新開始</button>
+      <button id="answer_btn">看答案</button>
+    </div>
+    <div class="group">
+      <button class="btn_num">1</button>
+      <button class="btn_num">2</button>
+      <button class="btn_num">3</button>
+      <button class="btn_num">4</button>
+      <button class="btn_num">5</button>
+      <button class="btn_num">6</button>
+      <button class="btn_num">7</button>
+      <button class="btn_num">8</button>
+      <button class="btn_num">9</button>
+      <div></div>
+      <button>0</button>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
