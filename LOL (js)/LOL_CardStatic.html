@@ -3456,6 +3456,7 @@
           }
           //alert("以文字迭代英雄人物資料！");
           alert("以文字迭代英雄人物資料！");
+          result.innerHTML = "";
           const ul = document.createElement("ul");
           heroArray.forEach((hero) => {
             let values = Object.values(hero);
@@ -3488,19 +3489,6 @@
           });
           CreateThead(heroTitle);
           CreateTBody(heroArrayValue);
-
-          //     heroArray.forEach((hero) => {
-          //       let tr = document.createElement("tr");
-          //       let title = hero.title;
-          //       let desc = hero.desc;
-          //       let url = hero.url;
-          //       tr.innerHTML = `<td>${title}</td>
-          // <td>${desc}</td>
-          // <td><img src="${url}" alt="${title}"></td>`;
-          //       tbody.append(tr);
-          //     });
-          //     table.append(tbody);
-          //     result.append(table);
         });
       };
 
