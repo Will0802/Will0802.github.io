@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .wrap {
+        width: 960px;
+        text-align: center;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>1A2B 猜猜看</h1>
+      <input type="text" id="guess_input" placeholder="輸入四個無重複數字" />
+      <button id="guess_btn">猜!</button>
+      <button id="answer_btn">偷看答案</button>
+      <button id="start_btn">開始遊戲</button>
+      <button id="restart_btn">放棄重來</button>
+      <textarea name="" id="msg" cols="20" rows="10"></textarea>
+    </div>
+
+    <script>
+      //宣告DOM
+      const guessInput = document.getElementById("guess_input");
+      const guessBtn = document.getElementById("guess_btn");
+      const restartBtn = document.getElementById("restart_btn");
+      const answerBtn = document.getElementById("answer_btn");
+      const startBtn = document.getElementById("start_btn");
+      const msgBox = document.getElementById("msg");
+
+      let answerArray = [];
+      let answer;
+
+      //監聽事件區
+      startBtn.addEventListener("click", () => {
+        generateAnswer();
+      });
+      guessBtn.addEventListener("click", () => {
+        checkAns();
+      });
+      restartBtn.addEventListener("click", () => {});
+      answerBtn.addEventListener("click", () => {
+        alert(answer);
+      });
+
+      ///// function區-
+
+      //生成亂數
+      function generateAnswer() {
+        while (answerArray.length != 4) {
+          let randonNum = Math.floor(Math.random() * 10);
+          if (!answerArray.includes(randonNum)) {
+            answerArray.push(randonNum);
+          }
+          answer = answerArray.map((n) => n).join("");
+          console.log(answer);
+        }
+      }
+
+      //初始化
+      function init() {
+        guessInput.value = "";
+        generateAnswer();
+        msgBox.innerText += "123";
+      }
+
+      //判斷過關
+      function checkAns() {
+        if (guessInput.value.length != 4) {
+          alert("不符合4個數字長度");
+        }
+      }
+      //判斷a、b
+    </script>
+  </body>
+</html>
