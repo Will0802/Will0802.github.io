@@ -19,8 +19,8 @@
       <button id="guess_btn">猜!</button>
       <button id="answer_btn">偷看答案</button>
       <button id="start_btn">開始遊戲</button>
-      <button id="restart_btn">放棄重來</button>
-      <textarea name="" id="msg" cols="20" rows="10"></textarea>
+      <button id="restart_btn">重頭來過</button>
+      <div id="msg"></div>
     </div>
 
     <script>
@@ -35,14 +35,27 @@
       let answerArray = [];
       let answer;
 
+      window.onload = function () {
+        guessBtn.disabled = true;
+        restartBtn.disabled = true;
+        answerBtn.disabled = true;
+      };
+
       //監聽事件區
       startBtn.addEventListener("click", () => {
+        guessBtn.disabled = false;
+        restartBtn.disabled = false;
+        answerBtn.disabled = false;
+        startBtn.disabled = true;
         generateAnswer();
       });
       guessBtn.addEventListener("click", () => {
         checkAns();
+        guessInput.value = "";
       });
-      restartBtn.addEventListener("click", () => {});
+      restartBtn.addEventListener("click", () => {
+        restart();
+      });
       answerBtn.addEventListener("click", () => {
         alert(answer);
       });
@@ -61,20 +74,44 @@
         }
       }
 
-      //初始化
-      function init() {
-        guessInput.value = "";
-        generateAnswer();
-        msgBox.innerText += "123";
-      }
-
-      //判斷過關
+      //判斷輸入條件符合及A、B
       function checkAns() {
-        if (guessInput.value.length != 4) {
-          alert("不符合4個數字長度");
+        let userInput = guessInput.value;
+        let a = 0;
+        let b = 0;
+        if (
+          userInput.length != 4 ||
+          userInput.includes(" ") ||
+          isNaN(userInput)
+        ) {
+          alert("請輸入四個數字不含符號，且不能有空白");
+        } else {
+          let uniqueDigits = new Set(userInput);
+          if (uniqueDigits.size !== 4) {
+            alert("請輸入四個不重複數字");
+          }
+        }
+
+        Array.from(userInput).forEach((char, index) => {
+          if (char === answer[index]) {
+            a++;
+          } else if (answer.includes(char)) {
+            b++;
+          }
+        });
+        let result = `${userInput} : ${a}A${b}B`;
+
+        if ((a == 4) & (b == 0)) {
+          alert("破關成功");
+          msgBox.innerHTML += `${result}</br>`;
+        } else if (userInput.length === 4 || uniqueDigits.size === 4) {
+          msgBox.innerHTML += `${result}</br>`;
         }
       }
-      //判斷a、b
+
+      function restart() {
+        location.reload();
+      }
     </script>
   </body>
 </html>
