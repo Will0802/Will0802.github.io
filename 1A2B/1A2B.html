@@ -85,10 +85,12 @@
           isNaN(userInput)
         ) {
           alert("請輸入四個數字不含符號，且不能有空白");
+          return;
         } else {
           let uniqueDigits = new Set(userInput);
           if (uniqueDigits.size !== 4) {
             alert("請輸入四個不重複數字");
+            return;
           }
         }
 
@@ -104,7 +106,7 @@
         if ((a == 4) & (b == 0)) {
           alert("破關成功");
           msgBox.innerHTML += `${result}</br>`;
-        } else if (userInput.length === 4 || uniqueDigits.size === 4) {
+        } else {
           msgBox.innerHTML += `${result}</br>`;
         }
       }
