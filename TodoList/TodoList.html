@@ -20,8 +20,7 @@
               TodoList
             </div>
             <div class="card-body">
-              <!-- 輸入區 -->
-
+              <!-- 輸入待辦區 -->
               <form id="todo-form">
                 <div class="input-group mb-3">
                   <input
@@ -41,7 +40,7 @@
                   </button>
                 </div>
               </form>
-              <!-- 清單區 -->
+              <!-- 渲染待辦區 -->
               <div class="list" id="todo-list"></div>
             </div>
           </div>
@@ -55,121 +54,114 @@
     ></script>
 
     <script>
-      //DOM//
+      //DOM
       const input = document.getElementById("input");
       const todoForm = document.getElementById("todo-form");
       const todoList = document.getElementById("todo-list");
 
-      //addEventListener//
+      //addEventListener
       todoForm.addEventListener("submit", () => {
-        let list = getLocalStorage();
         let addTodo = input.value;
         if (addTodo == "") {
           alert("請輸入待辦事項");
         } else {
-          addTodoList(addTodo);
+          addList(addTodo);
         }
       });
       todoList.addEventListener("change", (event) => {
-        let list = getLocalStorage();
+        let list = getLocalstorage();
         const target = event.target; //<input class="form-check-input me-1" type="checkbox" value="">
         if (target.type == "checkbox") {
           const idx = target.id.split("-")[1];
-          list[idx].ischeck = target.checked;
-          setLocalStorage(list);
+          list[idx].ischeck = target.checked; //取得true、false狀態給ischeck
+          setLocalstorage(list);
         }
       });
 
       window.onload = function () {
         showList();
       };
+      //function
 
-      //function//
-
-      //新增清單
-      function addTodoList(toDo) {
-        let list = getLocalStorage();
+      //增加待辦
+      function addList(txt) {
+        let list = getLocalstorage();
         let value = {
-          txt: toDo,
+          todo: txt,
           ischeck: false,
         };
         list.push(value);
-        setLocalStorage(list);
+        setLocalstorage(list);
+        showList();
+      }
+      //刪除待辦
+      function deleteList(idx) {
+        let list = getLocalstorage();
+        list.splice(idx, 1);
+        setLocalstorage(list);
         showList();
       }
 
-      //刪除清單
-      function deleteList(idx) {
-        let list = getLocalStorage(); //array陣列
-        list.splice(idx, 1); //指定陣列索引刪除
-        setLocalStorage(list); //再寫入給localstorage
-        showList(); //重新秀清單
-      }
-
-      //預設編輯狀態(編輯開關)
+      //預設編輯狀態
       let isEditing = false;
       let editIdx = -1;
 
-      //編輯清單  (編輯打開)
+      //編輯待辦 (編輯打開)
       function editList(idx) {
-        let list = getLocalStorage();
         isEditing = true;
         editIdx = idx;
         showList();
       }
 
-      //儲存清單 (編輯關閉)
+      //儲存待辦 (編輯關閉)
       function saveEdit(idx) {
-        let list = getLocalStorage();
+        let list = getLocalstorage();
         let newList = document.getElementById("editContent").value;
-        list[idx].txt = newList;
-        setLocalStorage(list);
+        list[idx].todo = newList;
+        setLocalstorage(list);
         isEditing = false;
         editIdx = -1;
         showList();
       }
 
-      //顯示清單
+      //顯示待辦
       function showList() {
-        let list = getLocalStorage();
         todoList.innerHTML = "";
-
+        let list = getLocalstorage();
         for (let i = 0; i < list.length; i++) {
           let item = list[i];
           console.log(item.ischeck);
           let isChecked = item.ischeck ? "checked " : "";
           todoList.innerHTML += `
-        <div class="input-group my-3">
-            <ul class="list-group flex-grow-1">
-              <li class="list-group-item">
-                 <input class="form-check-input me-1" type="checkbox" value="" id=checkbox-${i} ${isChecked}>
-                 <span>
-              ${
-                isEditing && editIdx == i
-                  ? `<input type="text" class="form-control" value="${item.txt}" id="editContent">`
-                  : item.txt
-              }
-               </span>
-               </li>
-             </ul>
-        ${
-          isEditing && editIdx == i
-            ? `<button class="btn mx-1 rounded btn-success" type="button" onclick="saveEdit(${i})">儲存</button>`
-            : `<button class="btn mx-1 rounded btn-warning text-dark" type="button" onclick="editList(${i})">編輯</button>`
-        }
-               <button class="btn mx-1 rounded btn-danger text-whites" type="button" onclick="deleteList(${i})">刪除</button>
-          </div> `;
+                <div class="input-group my-3">
+                    <ul class="list-group flex-grow-1">
+                      <li class="list-group-item">
+                         <input class="form-check-input me-1" type="checkbox" value="" id="checkbox-${i}" ${isChecked}>
+                         <span>
+                             ${
+                               isEditing && editIdx == i
+                                 ? `<input type="text" class="form-control" value="${item.todo}" id="editContent">`
+                                 : item.todo
+                             }
+                          </span>
+                       </li>
+                    </ul>
+                     ${
+                       isEditing && editIdx == i
+                         ? `<button class="btn mx-1 rounded btn-success" type="button" onclick="saveEdit(${i})">儲存</button>`
+                         : `<button class="btn mx-1 rounded btn-warning text-dark" type="button" onclick="editList(${i})">編輯</button>`
+                     }
+                    <button class="btn mx-1 rounded btn-danger text-whites" type="button" onclick="deleteList(${i})">刪除</button>
+                  </div> `;
         }
       }
-
-      //讀取localstorage
-      function getLocalStorage() {
+      //取得localstorage
+      function getLocalstorage() {
         let data = JSON.parse(localStorage.getItem("lists"));
         return data ? data : [];
       }
-
       //寫入localstorage
-      function setLocalStorage(item) {
+      function setLocalstorage(item) {
         localStorage.setItem("lists", JSON.stringify(item));
       }
     </script>
