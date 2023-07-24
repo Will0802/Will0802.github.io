@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Apple</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <button id="home"><i class="fa-brands fa-apple"></i></button>
+          <button id="">Ipad Air</button>
+          <button id="">Iphpne</button>
+          <button id="">Mac</button>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-8">
+          <img src="./gray.jpg" alt="" id="image" class="w-100" />
+        </div>
+        <div class="col-12 col-md-3">
+          <div class="select">
+            <!-- 顏色外觀 -->
+            <h3>外觀。</h3>
+            <div class="row select-color">
+              <div class="row row-cols-4">
+                <button class="color m-3 p-1 bg-white">
+                  <img src="./gray.png" id="gray" class="w-100" />太空灰色
+                </button>
+                <button class="color m-3 p-1 bg-white">
+                  <img src="./blue.png" id="blue" class="w-100" />藍色
+                </button>
+                <button class="color m-3 p-1 bg-white">
+                  <img src="./pink.png" id="pink" class="w-100" />粉紅色
+                </button>
+                <button class="color m-3 p-1 bg-white">
+                  <img src="./purple.png" id="purple" class="w-100" />紫色
+                </button>
+                <button class="color m-3 p-1 bg-white">
+                  <img
+                    src="./starlight.png"
+                    id="starlight"
+                    class="w-100"
+                  />星光色
+                </button>
+              </div>
+            </div>
+            <!-- 儲存容量 -->
+            <h3>儲存裝置。</h3>
+            <div class="select-storage">
+              <button class="storage" id="64GB">64GB</button>
+              <button class="storage" id="256GB">256GB</button>
+            </div>
+            <!-- 網路功能 -->
+            <h3>連線能力。</h3>
+            <div class="select-network">
+              <button class="network" id="Wi-Fi">Wi-Fi</button>
+              <button class="network" id="Cellular">Wi-Fi+行動網路</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2 id="finalPrice">NT$19,900起</h2>
+      </div>
+    </div>
+    <!-- 價格顯示區 -->
+
+    <script>
+      const url =
+        "https://raw.githubusercontent.com/Will0802/FileStorage/main/ipadair2023.json";
+
+      //宣告
+      let xhr = new XMLHttpRequest();
+      let _color, _storage, _network;
+      let totalPrice = 0;
+      let storagePrice = 0;
+      let networkPrice = 0;
+      let ipadArray = [];
+
+      //選取
+      let colorButtons = document.querySelectorAll(".color");
+      let storageButtons = document.querySelectorAll(".storage");
+      let netWorkButtons = document.querySelectorAll(".network");
+      let showPrice = document.getElementById("finalPrice");
+      let ipadImg = document.querySelector("#image");
+      let homepage = document.getElementById("home");
+
+      // function
+      window.onload = function () {
+        requestIpadJson();
+        changeColor();
+        changeStorage();
+        changeNetwork();
+        homepage.addEventListener("click", () => {
+          location.reload();
+        });
+      };
+      //解析json來源
+      function requestIpadJson() {
+        xhr.onload = function () {
+          ipadArray = JSON.parse(this.response);
+        };
+        xhr.open("GET", url);
+        xhr.send();
+      }
+
+      //顏色按鈕更換圖片
+      function changeColor() {
+        colorButtons.forEach((x) =>
+          x.addEventListener("click", function (event) {
+            if (event.target.tagName.toLowerCase() === "img") {
+              _color = event.target.parentNode.innerText;
+            } else {
+              _color = event.target.innerText;
+            }
+            console.log(_color);
+            let imgSrc = this.getElementsByTagName("img")[0].id;
+            ipadImg.src = `http://127.0.0.1:5501/Apple/${imgSrc}.jpg`;
+          })
+        );
+      }
+
+      //點選容量，選到價格
+      function changeStorage() {
+        storageButtons.forEach((x) =>
+          x.addEventListener("click", function (event) {
+            _storage = event.target.id;
+            console.log(_storage);
+            showTotalPrice();
+          })
+        );
+      }
+      //點選網路，選到價格
+      function changeNetwork() {
+        netWorkButtons.forEach((x) =>
+          x.addEventListener("click", function (event) {
+            _network = event.target.id;
+            console.log(_network);
+            showTotalPrice();
+          })
+        );
+      }
+      //計算價格及顯示價格
+      function showTotalPrice() {
+        let filter = ipadArray.filter(
+          (x) =>
+            x.color == _color && x.storage == _storage && x.network == _network
+        );
+        console.log(filter[0].price);
+        showPrice.innerText = `NT$${filter[0].price}`;
+      }
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
