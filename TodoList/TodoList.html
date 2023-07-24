@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container mt-3">
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <div class="card">
+            <div class="card-header text-center fs-1 text-primary">
+              TodoList
+            </div>
+            <div class="card-body">
+              <!-- 輸入區 -->
+
+              <form id="todo-form">
+                <div class="input-group mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="請輸入待辦事項"
+                    aria-label="Recipient's username"
+                    aria-describedby="button-addon2"
+                    id="input"
+                  />
+                  <button
+                    class="btn btn-primary text-white rounded-end"
+                    type="submit"
+                    id="add"
+                  >
+                    新增
+                  </button>
+                </div>
+              </form>
+              <!-- 清單區 -->
+              <div class="list" id="todo-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      //DOM//
+      const input = document.getElementById("input");
+      const todoForm = document.getElementById("todo-form");
+      const todoList = document.getElementById("todo-list");
+
+      //addEventListener//
+      todoForm.addEventListener("submit", () => {
+        let list = getLocalStorage();
+        let addTodo = input.value;
+        if (addTodo == "") {
+          alert("請輸入待辦事項");
+        } else {
+          addTodoList(addTodo);
+        }
+      });
+      todoList.addEventListener("change", (event) => {
+        let list = getLocalStorage();
+        const target = event.target; //<input class="form-check-input me-1" type="checkbox" value="">
+        if (target.type == "checkbox") {
+          const idx = target.id.split("-")[1];
+          list[idx].ischeck = target.checked;
+          setLocalStorage(list);
+        }
+      });
+
+      window.onload = function () {
+        showList();
+      };
+
+      //function//
+
+      //新增清單
+      function addTodoList(toDo) {
+        let list = getLocalStorage();
+        let value = {
+          txt: toDo,
+          ischeck: false,
+        };
+        list.push(value);
+        setLocalStorage(list);
+        showList();
+      }
+
+      //刪除清單
+      function deleteList(idx) {
+        let list = getLocalStorage(); //array陣列
+        list.splice(idx, 1); //指定陣列索引刪除
+        setLocalStorage(list); //再寫入給localstorage
+        showList(); //重新秀清單
+      }
+
+      //預設編輯狀態(編輯開關)
+      let isEditing = false;
+      let editIdx = -1;
+
+      //編輯清單  (編輯打開)
+      function editList(idx) {
+        let list = getLocalStorage();
+        isEditing = true;
+        editIdx = idx;
+        showList();
+      }
+
+      //儲存清單 (編輯關閉)
+      function saveEdit(idx) {
+        let list = getLocalStorage();
+        let newList = document.getElementById("editContent").value;
+        list[idx].txt = newList;
+        setLocalStorage(list);
+        isEditing = false;
+        editIdx = -1;
+        showList();
+      }
+
+      //顯示清單
+      function showList() {
+        let list = getLocalStorage();
+        todoList.innerHTML = "";
+
+        for (let i = 0; i < list.length; i++) {
+          let item = list[i];
+          console.log(item.ischeck);
+          let isChecked = item.ischeck ? "checked " : "";
+          todoList.innerHTML += `
+        <div class="input-group my-3">
+            <ul class="list-group flex-grow-1">
+              <li class="list-group-item">
+                 <input class="form-check-input me-1" type="checkbox" value="" id=checkbox-${i} ${isChecked}>
+                 <span>
+              ${
+                isEditing && editIdx == i
+                  ? `<input type="text" class="form-control" value="${item.txt}" id="editContent">`
+                  : item.txt
+              }
+               </span>
+               </li>
+             </ul>
+        ${
+          isEditing && editIdx == i
+            ? `<button class="btn mx-1 rounded btn-success" type="button" onclick="saveEdit(${i})">儲存</button>`
+            : `<button class="btn mx-1 rounded btn-warning text-dark" type="button" onclick="editList(${i})">編輯</button>`
+        }
+               <button class="btn mx-1 rounded btn-danger text-whites" type="button" onclick="deleteList(${i})">刪除</button>
+          </div> `;
+        }
+      }
+
+      //讀取localstorage
+      function getLocalStorage() {
+        let data = JSON.parse(localStorage.getItem("lists"));
+        return data ? data : [];
+      }
+
+      //寫入localstorage
+      function setLocalStorage(item) {
+        localStorage.setItem("lists", JSON.stringify(item));
+      }
+    </script>
+  </body>
+</html>
