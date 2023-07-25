@@ -73,7 +73,7 @@
         const target = event.target; //<input class="form-check-input me-1" type="checkbox" value="">
         if (target.type == "checkbox") {
           const idx = target.id.split("-")[1];
-          list[idx].ischeck = target.checked; //取得true、false狀態給ischeck
+          list[idx].ischeck = target.checked; //取得的true、false狀態給ischeck
           setLocalstorage(list);
         }
       });
@@ -113,13 +113,13 @@
         showList();
       }
 
-      //儲存待辦 (編輯關閉)
+      //儲存待辦
       function saveEdit(idx) {
         let list = getLocalstorage();
         let newList = document.getElementById("editContent").value;
         list[idx].todo = newList;
         setLocalstorage(list);
-        isEditing = false;
+        isEditing = false; // (編輯關閉)
         editIdx = -1;
         showList();
       }
@@ -130,7 +130,7 @@
         let list = getLocalstorage();
         for (let i = 0; i < list.length; i++) {
           let item = list[i];
-          console.log(item.ischeck);
+          // console.log(item.ischeck);
           let isChecked = item.ischeck ? "checked " : "";
           todoList.innerHTML += `
                 <div class="input-group my-3">
@@ -139,7 +139,7 @@
                          <input class="form-check-input me-1" type="checkbox" value="" id="checkbox-${i}" ${isChecked}>
                          <span>
                              ${
-                               isEditing && editIdx == i
+                               isEditing && editIdx == i //編輯開關打開且索引位置相符合
                                  ? `<input type="text" class="form-control" value="${item.todo}" id="editContent">`
                                  : item.todo
                              }
