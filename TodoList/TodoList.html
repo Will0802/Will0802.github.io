@@ -74,6 +74,7 @@
         if (target.type == "checkbox") {
           const idx = target.id.split("-")[1];
           list[idx].ischeck = target.checked; //取得的true、false狀態給ischeck
+          console.log(target.checked);
           setLocalstorage(list);
         }
       });
@@ -81,6 +82,7 @@
       window.onload = function () {
         showList();
       };
+
       //function
 
       //增加待辦

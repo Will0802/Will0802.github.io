@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Map</title>
+    <!-- Leaflet CDN -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <!-- Leaflet plugin-->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"
+    />
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+
+    <!-- BootStrap CDN-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      .container > .row {
+        height: 100vh;
+      }
+
+      #map {
+        height: 50vh;
+      }
+
+      @media (min-width: 768px) {
+        /* 在md及以上的尺寸地圖改為視窗高度 */
+        #map {
+          height: 100vh;
+        }
+
+        div > span {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 20px;
+          color: #ffffff;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background-color: rgba(15, 18, 199, 0.8);
+          /* 使用 rgba() 設定顏色透明度 */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-6 py-3" id="content">
+          <div id="map" class=""></div>
+        </div>
+        <div class="col-12 col-md-6 py-3">
+          <div>
+            <h2>全國休閒農業區旅遊資訊</h2>
+            <p id="updateInfo">最後更新時間: 2021/08/20 12:00:00</p>
+            <p>
+              <button class="btn btn-outline-dark" onclick="renew()">
+                更新地圖資料
+              </button>
+            </p>
+            <!-- <p><button onclick="geoFindMe()">Show my location</button></p> -->
+            <div id="out"></div>
+            <div class="input-group mb-3">
+              <div class="input-group-text" id="basic-addon2">請輸入關鍵字</div>
+
+              <input
+                type="text"
+                class="form-control"
+                placeholder=""
+                aria-label=""
+                aria-describedby="basic-addon2"
+                id="input"
+              />
+              <button type="button" class="btn btn-outline-dark" id="query">
+                查詢
+              </button>
+            </div>
+            <button class="btn btn-outline-dark mb-3" id="random">
+              隨便去一個都行
+            </button>
+          </div>
+
+          <div id="queryResult">
+            <!-- <div class="col-12 d-flex text-center">
+                    <div class="col-3 p-1"><strong>地點</strong></div>
+                    <div class="col-3 p-1"><strong>地址</strong></div>
+                    <div class="col-3 p-1"><strong>電話</strong></div>
+                    <div class="col-3 p-1"><strong></strong></div>
+                </div>
+                <div class="col-12 d-flex">
+                    <div class="col-3 p-1">黃金小鎮休閒農業區</div>
+                    <div class="col-3 p-1">苗栗縣公館鄉福基村6鄰154號</div>
+                    <div class="col-3 p-1 text-center">(037) 237-698</div>
+                    <div class="col-3 p-1 text-end">
+                        <button type="button" class="btn btn-outline-dark">地圖</button>
+                    </div>
+                </div> -->
+            <div><img src="" class="w-100" /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BootStrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      //todo...
+      let latitude = 0; //24.810559763299388    // 緯度
+      let longitude = 0; //120.97491386132378  // 經度
+      let zoom = 17; // 放大，數字越大地圖越近，可設定0 - 19
+
+      //停車位 JSON連結
+      const url =
+        "https://data.coa.gov.tw/Service/OpenData/ODwsv/ODwsvAttractions.aspx?IsTransData=1&UnitId=192";
+
+      let farmData = [];
+      let map = ""; // 地圖物件
+      let markers = L.markerClusterGroup(); //地圖物件群組
+
+      //DOM
+      const updateInfoDom = document.querySelector("#updateInfo");
+      const inputDom = document.querySelector("#input");
+      const queryBtn = document.querySelector("#query");
+      const randomBtn = document.getElementById("random");
+      const queryResultDom = document.querySelector("#queryResult");
+
+      window.onload = function () {
+        try {
+          //取得使用者座標
+          geoFindMe()
+            .then((res) => {
+              console.log(res);
+
+              latitude = res[0];
+              longitude = res[1];
+
+              initFN();
+            })
+            .catch((e) => {
+              console.log(e);
+            });
+        } catch (e) {
+          console.log(e);
+        }
+      };
+      function initFN() {
+        //初始地圖
+        initMap();
+
+        //渲染資料
+        getMapData();
+      }
+      queryBtn.addEventListener("click", () => {
+        if (inputDom.value == "") {
+          alert("請輸入關鍵字");
+          return;
+        } else {
+          //Todo...要撈出搜尋關鍵字資料
+          query();
+        }
+      });
+      randomBtn.addEventListener("click", () => {
+        let radNum = Math.floor(Math.random() * farmData.length);
+        console.log(radNum);
+        let radFarm = farmData[radNum];
+        console.log(radFarm);
+        let str = ` 
+                 <div class="col-12 d-flex text-center">
+                    <div class="col-3 p-1"><strong>地點</strong></div>
+                    <div class="col-4 p-1"><strong>地址</strong></div>
+                    <div class="col-3 p-1"><strong>電話</strong></div>
+                    <div class="col-2 p-1"><strong></strong></div>
+                </div>
+                <div class="col-12 d-flex">
+                    <div class="col-3 p-1">${radFarm.Name}</div>
+                    <div class="col-4 p-1">${radFarm.Address}</div>
+                    <div class="col-3 p-1 text-center">${radFarm.Tel}</div>
+                    <div class="col-2 p-1 text-end">
+                <button type="button" class="btn btn-outline-dark" onclick="goMap(${radFarm.Latitude},${radFarm.Longitude})">地圖</button>
+                </div>
+                </div>`;
+        queryResultDom.innerHTML = str;
+      });
+
+      function query() {
+        //初始化
+        queryResultDom.innerHTML = "";
+        //過濾資料
+        let filterData = farmData.filter((item) => {
+          //搜尋的關鍵字 //Address、Name
+          return (
+            item.Address.includes(inputDom.value) ||
+            item.Name.includes(inputDom.value)
+          );
+        });
+        console.log(filterData);
+
+        let str = `<div class="col-12 d-flex text-center">
+                    <div class="col-3 p-1"><strong>地點</strong></div>
+                    <div class="col-4 p-1"><strong>地址</strong></div>
+                    <div class="col-3 p-1"><strong>電話</strong></div>
+                    <div class="col-2 p-1"><strong></strong></div>
+                </div>`;
+
+        //關鍵字查詢是否有資料，如果沒有資料，我要顯示查無資料
+        if (filterData == "") {
+          str += `
+            <div class="col-12 d-flex text-center">
+              <div class="col-3 p-1"><strong>查無資料</strong></div>
+            </div>
+            `;
+        } else {
+          //Todo...迭代查詢結果將資料印出到畫面上
+          filterData.forEach((item) => {
+            str += ` <div class="col-12 d-flex">
+                    <div class="col-3 p-1">${item.Name}</div>
+                    <div class="col-4 p-1">${item.Address}</div>
+                    <div class="col-3 p-1 text-center">${item.Tel}</div>
+                    <div class="col-2 p-1 text-end">
+                        <button type="button" class="btn btn-outline-dark" onclick="goMap(${item.Latitude},${item.Longitude})">地圖</button>
+                    </div>
+                </div>`;
+          });
+        }
+        queryResultDom.innerHTML = str;
+      }
+
+      //查詢結果按下，地圖按鈕
+      function goMap(lat, lng) {
+        //取得資料
+        getMapData();
+        //顯示搜尋結果的地圖畫面位置
+        map.setView([lat, lng], 19);
+      }
+
+      function renew() {
+        //Todo...更新farmData
+        getMapData();
+        if (inputDom.value != "") {
+          query();
+        }
+      }
+
+      function getMapData() {
+        //取得JSON資料
+        fetch(url)
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            farmData = data;
+
+            //Todo...渲染地圖
+            renderMap();
+            //Todo...更新日期時間
+            let today = new Date();
+            let year = today.getFullYear();
+            let month = today.getMonth() + 1;
+            let date = today.getDate();
+            let hr = today.getHours();
+            let min = today.getMinutes();
+            console.log(`${year}/${month}/${date} ${hr}:${min}`);
+
+            //補足時間兩位數
+            month = updateInfo(month);
+            date = updateInfo(date);
+            hr = updateInfo(hr);
+            min = updateInfo(min);
+            console.log(`${year}/${month}/${date} ${hr}:${min}`);
+            updateInfoDom.textContent = `最後更新時間 : ${year}/${month}/${date} ${hr}:${min}`;
+          });
+      }
+
+      function renderMap() {
+        if (markers) {
+          markers.clearLayers();
+        }
+
+        //取得每一筆農場data，並加上marker及popup
+        farmData.forEach((item) => {
+          // console.log(item);
+
+          //把每一筆的經緯度設定到 marker
+          //放上標記
+          var marker = L.marker([item.Latitude, item.Longitude]);
+
+          //標記視窗
+          marker.bindPopup(
+            `
+            <h6>${item.Name}</h6>
+            <p>${item.Introduction}</p>
+            <img src="${item.Photo}" class="w-100">
+            `
+          );
+
+          markers.addLayer(marker);
+        });
+
+        map.addLayer(markers);
+      }
+
+      //補足時間兩位數
+      function updateInfo(data) {
+        let updateData = data < 10 ? "0" + data : data;
+        return updateData;
+      }
+
+      function initMap() {
+        //初始化地圖
+        map = L.map("map").setView([latitude, longitude], zoom);
+        //map.setView([latitude, longitude], 19); 可重複宣告setView
+
+        //載入圖層
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 19,
+          attribution: "© OpenStreetMap",
+        }).addTo(map);
+      }
+
+      //地理位置定位
+      function geoFindMe() {
+        return new Promise((resolve, reject) => {
+          var output = document.getElementById("out");
+
+          if (!navigator.geolocation) {
+            output.innerHTML =
+              "<p>Geolocation is not supported by your browser</p>";
+            return;
+          }
+
+          function success(position) {
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+
+            output.innerHTML =
+              "<p>Latitude is " +
+              latitude +
+              "° <br>Longitude is " +
+              longitude +
+              "°</p>";
+
+            // var img = new Image();
+            // img.src =
+            //   "http://maps.googleapis.com/maps/api/staticmap?center=" +
+            //   latitude +
+            //   "," +
+            //   longitude +
+            //   "&zoom=13&size=300x300&sensor=false";
+
+            // output.appendChild(img);
+
+            return resolve([latitude, longitude]);
+          }
+
+          function error() {
+            output.innerHTML = "Unable to retrieve your location";
+
+            //失敗時指定預設值給經緯度
+            latitude = 24.810559763299388;
+            longitude = 120.97491386132378;
+
+            //Todo...呼叫接下來的方法
+            initFN();
+          }
+
+          output.innerHTML = "<p>Locating…</p>";
+
+          navigator.geolocation.getCurrentPosition(success, error);
+        });
+      }
+    </script>
+  </body>
+</html>
