@@ -182,10 +182,11 @@
         }
       });
       randomBtn.addEventListener("click", () => {
-        let radNum = Math.floor(Math.random() * farmData.length);
+        let radNum = Math.floor(Math.random() * farmData.length) + 1;
         console.log(radNum);
         let radFarm = farmData[radNum];
         console.log(radFarm);
+        goMap(radFarm.Latitude, radFarm.Longitude);
         let str = ` 
                  <div class="col-12 d-flex text-center">
                     <div class="col-3 p-1"><strong>地點</strong></div>
@@ -252,7 +253,7 @@
         //取得資料
         getMapData();
         //顯示搜尋結果的地圖畫面位置
-        map.setView([lat, lng], 19);
+        map.setView([lat, lng], 18);
       }
 
       function renew() {
