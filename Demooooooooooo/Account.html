@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Account Overview</title>
+    <!-- bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      a {
+        text-decoration: none;
+      }
+
+      .accountTitle {
+        font-family: "Open Sans", sans-serif;
+        font-size: 46px;
+      }
+      .accountName {
+        font-size: 32px;
+      }
+      .accountNameYear {
+        text-align: left;
+      }
+      .qtContent {
+        padding-top: 12px;
+        font-size: 13px;
+      }
+      .viewAll {
+        font-size: 14px;
+      }
+      .genywIcon {
+        font-size: 99px;
+        font-weight: 100;
+      }
+      .beyonce {
+        position: relative;
+      }
+      .EventsGp {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: end;
+      }
+      .Events {
+        position: relative;
+        background-color: rgba(31, 38, 45, 0.8);
+        color: white;
+        margin-left: 8px;
+        margin-bottom: 8px;
+      }
+      .eventsDate {
+        font-size: 15px;
+      }
+      .eventsDatepurple {
+        color: purple;
+        font-weight: 900;
+      }
+      .eventsInfo {
+        font-size: 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .genyw {
+        font-size: 14px;
+        letter-spacing: 0.5px;
+      }
+      .genywTitle {
+        color: purple;
+      }
+      .qt > svg {
+        width: 64px;
+        height: 64px;
+      }
+      .custom-tooltip {
+        --bs-tooltip-bg: #fff;
+        --bs-tooltip-color: #000;
+        --bs-tooltip-border-color: red;
+        --bs-tooltip-max-width: 300px;
+      }
+      .custom-tooltip .tooltip-inner {
+        border: 1px solid #4444447c;
+        text-align: left;
+      }
+
+      .custom-tooltip[data-bs-placement^="bottom"] .tooltip-arrow::before,
+      .custom-tooltip .tooltip-arrow::before {
+        border-bottom-color: #4444447c !important;
+      }
+      @media screen and (min-width: 768px) {
+        .accountNameYear {
+          text-align: center;
+        }
+        .EditProfileBtn {
+          display: flex;
+        }
+      }
+      @media screen and (max-width: 767px) {
+        .hiddenblockInCol {
+          display: none;
+        }
+        .accounttitle {
+          font-size: 24px;
+        }
+        .accountNameGp {
+          display: flex;
+        }
+        .accountName {
+          font-size: 16px;
+        }
+      }
+      @media screen and (max-width: 1023px) {
+        .hiddenblockInMd {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 會員中心標題 -->
+    <div class="container py-4">
+      <div class="row">
+        <div class="col-12">
+          <div>
+            <h5 class="accountTitle">
+              <!-- 使用google fonts -->
+              Account Overview
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 內容區塊 -->
+    <div class="container">
+      <div class="row">
+        <!--左邊區塊 -->
+        <div class="col-12 col-lg-3 col-md-4">
+          <ul class="list-group shadow-sm">
+            <li class="list-group-item py-4">
+              <div class="accountNameYearGp">
+                <div class="accountNameGp">
+                  <p class="accountName my-2 text-center fw-bolder">
+                    XU &nbsp;
+                  </p>
+                  <p class="accountName my-2 text-center fw-bolder">
+                    PENG - XIANG
+                  </p>
+                </div>
+                <p class="accountNameYear text-danger-emphasis">
+                  Fan since 2023
+                </p>
+              </div>
+              <div class="EditProfileBtn justify-content-center">
+                <a href="#" class="btn btn-outline-primary rounded-0 py-0"
+                  >Edit Profile</a
+                >
+              </div>
+            </li>
+            <li class="list-group-item">
+              <h5 class="mb-1">Email Address</h5>
+              <p class="mb-1">testmail@gmail.com</p>
+              <a href="#">Edit</a>
+            </li>
+            <li class="list-group-item">
+              <h5 class="mb-1">Phone Number</h5>
+              <p class="mb-1">***-***-7510</p>
+              <a href="#">Edit Phone Number</a>
+            </li>
+          </ul>
+          <div class="hiddenblockInCol">
+            <ul class="list-group my-3 shadow-sm">
+              <li class="list-group-item py-4">
+                <a href="#" class="d-flex">My Tickets</a>
+              </li>
+              <li class="list-group-item py-4">
+                <a href="#" class="d-flex">My Listings</a>
+              </li>
+              <li class="list-group-item py-4">
+                <a
+                  href="#"
+                  class="d-flex align-items-center justify-content-between"
+                >
+                  My Digital Collectibles
+                  <i
+                    class="fa-solid fa-arrow-up-right-from-square text-secondary"
+                  ></i>
+                </a>
+              </li>
+              <li class="list-group-item py-4">
+                <a href="#" class="d-flex">Favorites</a>
+              </li>
+              <li class="list-group-item py-4">
+                <a href="#" class="d-flex">Settings</a>
+              </li>
+              <li class="list-group-item py-4">
+                <a href="#" class="d-flex">Payment Options</a>
+              </li>
+              <li class="list-group-item py-4">
+                <a href="#" class="d-flex">Gift Card Balance & Codes</a>
+              </li>
+            </ul>
+          </div>
+          <div class="hiddenblockInCol">
+            <ul class="list-group shadow-sm">
+              <li class="list-group-item">
+                <p class="fs-4 fw-bold my-4">We’re Here to Help</p>
+                <p class="my-1">Have questions?</p>
+                <a href="#" class="d-flex mb-3">Visit our Help Center</a>
+                <p class="my-0">
+                  Need help with an existing order? Choose the event you want to
+                  contact us about, and hit the 'Contact Us' button.
+                </p>
+                <a href="#" class="d-flex mb-3">Go to My Tickets</a>
+                <p class="my-0">Can't find your order?</p>
+                <a href="#" class="d-flex mb-3">Get Help</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 右邊區塊 -->
+        <div class="col-12 col-lg-9 col-md-8 ps-5">
+          <!-- Quick Tips -->
+          <h5 class="fw-bold mt-3">Quick Tips</h5>
+          <div class="row mt-5">
+            <!-- 左 -->
+            <div class="col-12 col-lg-4 d-flex">
+              <!-- 左icon -->
+              <div class="qt pe-4">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 40 40"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <title>Account checkup icon</title>
+                  <defs>
+                    <path id="account-checkup" d="M0 0h44v44H0z"></path>
+                  </defs>
+                  <g
+                    transform="translate(-4, -5)"
+                    fill="none"
+                    fill-rule="evenodd"
+                  >
+                    <mask id="account-checkup-mask" fill="#fff">
+                      <use xlink:href="#account-checkup"></use>
+                    </mask>
+                    <path
+                      d="M38.978 23.37c2.126 5.806-4.655 15.362-10.794 18.03-6.14 2.668-11.637-1.55-16.443-5.388-4.805-3.837-8.92-7.306-8.303-11.004.617-3.697 5.963-7.61 14.166-8.551 8.19-.94 19.235 1.118 21.374 6.912z"
+                      fill-opacity="0.1"
+                      fill="#026CDF"
+                      fill-rule="nonzero"
+                      mask="url(#account-checkup-mask)"
+                      transform="rotate(-45, 21.377, 29.239)"
+                    ></path>
+                    <g mask="url(#account-checkup-mask)">
+                      <g transform="translate(6, 6)">
+                        <circle
+                          stroke="#013670"
+                          cx="16"
+                          cy="16"
+                          r="16"
+                        ></circle>
+                        <path
+                          d="M7.619 28.952v-3.81c0-4.57 3.81-8.38 8.381-8.38s8.381 3.81 8.381 8.38v3.81S22.095 32 16 32c-6.095 0-8.381-3.048-8.381-3.048z"
+                          stroke="#1F262D"
+                          stroke-linecap="square"
+                          stroke-linejoin="round"
+                        ></path>
+                        <path
+                          d="M7.619 28.952v-3.81c0-4.57 3.81-8.38 8.381-8.38s8.381 3.81 8.381 8.38v3.81"
+                          stroke="#515961"
+                          stroke-linecap="square"
+                          stroke-linejoin="round"
+                        ></path>
+                        <circle
+                          stroke="#515961"
+                          cx="16"
+                          cy="11.429"
+                          r="5.333"
+                        ></circle>
+                        <circle
+                          stroke="#515961"
+                          cx="16"
+                          cy="16"
+                          r="16"
+                        ></circle>
+                      </g>
+                    </g>
+                    <g mask="url(#account-checkup-mask)">
+                      <g transform="translate(23, 23)">
+                        <circle
+                          stroke="#026CDF"
+                          fill="#026CDF"
+                          cx="10"
+                          cy="10"
+                          r="10"
+                        ></circle>
+                        <path
+                          stroke="#FFF"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M15 6l-6 7.5L5 10"
+                        ></path>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+              <!-- 左內容 -->
+              <div class="d-flex flex-column justify-content-between">
+                <div>
+                  <p class="d-inline fw-bolder">Account Health Check-Up</p>
+                  <p class="qtContent">
+                    Been awhile? Consider changing your password to protect your
+                    account.
+                  </p>
+                </div>
+                <div>
+                  <a href="#" class="btn btn-outline-primary rounded-0 py-0"
+                    >Update Password</a
+                  >
+                </div>
+              </div>
+            </div>
+            <!-- 中 -->
+            <div class="col-12 col-lg-4 d-flex">
+              <!-- 中ico -->
+              <div class="qt pe-4">
+                <svg
+                  width="44px"
+                  height="44px"
+                  viewBox="0 0 44 44"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <title>Favorites icon</title>
+                  <defs>
+                    <rect id="path-1" x="0" y="0" width="44" height="44"></rect>
+                  </defs>
+                  <g
+                    id="Page-1"
+                    stroke="none"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                  >
+                    <g
+                      id="Account-Overview"
+                      transform="translate(-1868.000000, -548.000000)"
+                    >
+                      <g
+                        id="icon"
+                        transform="translate(1868.000000, 548.000000)"
+                      >
+                        <mask id="mask-2" fill="white">
+                          <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Bounds"></g>
+                        <g
+                          id="Group-10"
+                          mask="url(#mask-2)"
+                          stroke="#515961"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <g
+                            transform="translate(0.500000, 0.500000)"
+                            id="Stroke-385"
+                          >
+                            <path d="M21.5,0 L21.5,2"></path>
+                            <path d="M21.5,5 L21.5,8"></path>
+                            <path d="M43,20.5 L38,20.5"></path>
+                            <path d="M36,20.5 L35,20.5"></path>
+                            <path d="M8,20.5 L4,20.5"></path>
+                            <path d="M2,20.5 L0,20.5"></path>
+                            <path d="M21.5,35 L21.5,36"></path>
+                            <path d="M21.5,39 L21.5,40"></path>
+                            <path d="M21.5,42 L21.5,43"></path>
+                          </g>
+                        </g>
+                        <path
+                          d="M39.9978445,3.29200038 L39.9978445,4.7123106"
+                          id="Stroke-385"
+                          stroke="#515961"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          mask="url(#mask-2)"
+                          transform="translate(39.997845, 4.002155) rotate(45.000000) translate(-39.997845, -4.002155) "
+                        ></path>
+                        <path
+                          d="M36,5.87867966 L36,10.1213203"
+                          id="Stroke-385"
+                          stroke="#515961"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          mask="url(#mask-2)"
+                          transform="translate(36.000000, 8.000000) rotate(45.000000) translate(-36.000000, -8.000000) "
+                        ></path>
+                        <path
+                          d="M39.5355339,36 L32.4644661,36"
+                          id="Stroke-385"
+                          stroke="#515961"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          mask="url(#mask-2)"
+                          transform="translate(36.000000, 36.000000) rotate(45.000000) translate(-36.000000, -36.000000) "
+                        ></path>
+                        <path
+                          d="M31.9142136,30.5 L29.0857864,30.5"
+                          id="Stroke-385"
+                          stroke="#515961"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          mask="url(#mask-2)"
+                          transform="translate(30.500000, 30.500000) rotate(45.000000) translate(-30.500000, -30.500000) "
+                        ></path>
+                        <path
+                          d="M5.70710678,4 L4.29289322,4"
+                          id="Stroke-385"
+                          stroke="#515961"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          mask="url(#mask-2)"
+                          transform="translate(5.000000, 4.000000) rotate(45.000000) translate(-5.000000, -4.000000) "
+                        ></path>
+                        <path
+                          d="M9.91421356,7.5 L7.08578644,7.5"
+                          id="Stroke-385"
+                          stroke="#515961"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          mask="url(#mask-2)"
+                          transform="translate(8.500000, 7.500000) rotate(45.000000) translate(-8.500000, -7.500000) "
+                        ></path>
+                        <path
+                          d="M13.5,29.0857864 L13.5,31.9142136"
+                          id="Stroke-385"
+                          stroke="#515961"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          mask="url(#mask-2)"
+                          transform="translate(13.500000, 30.500000) rotate(45.000000) translate(-13.500000, -30.500000) "
+                        ></path>
+                        <path
+                          d="M10,34.7071068 L10,33.2928932"
+                          id="Stroke-385"
+                          stroke="#515961"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          mask="url(#mask-2)"
+                          transform="translate(10.000000, 34.000000) rotate(45.000000) translate(-10.000000, -34.000000) "
+                        ></path>
+                        <path
+                          d="M7,36.2928932 L7,37.7071068"
+                          id="Stroke-385"
+                          stroke="#515961"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          mask="url(#mask-2)"
+                          transform="translate(7.000000, 37.000000) rotate(45.000000) translate(-7.000000, -37.000000) "
+                        ></path>
+                        <g id="Icon" mask="url(#mask-2)">
+                          <g
+                            transform="translate(8.789629, 15.714095) scale(-1, 1) rotate(25.000000) translate(-8.789629, -15.714095) translate(2.789629, 12.214095)"
+                          ></g>
+                        </g>
+                        <g id="Icon" mask="url(#mask-2)">
+                          <g
+                            transform="translate(22.000000, 22.500000) scale(-1, 1) translate(-22.000000, -22.500000) translate(10.000000, 16.000000)"
+                          ></g>
+                        </g>
+                        <path
+                          d="M35.6013468,21.1307638 C37.7274524,26.9376859 30.9465596,36.4930588 24.8072727,39.1614475 C18.6679858,41.8298362 13.1703047,37.6112407 8.36455145,33.7738436 C3.55879818,29.9364465 -0.555027268,26.4675412 0.0614175242,22.7699168 C0.677862316,19.0722925 6.02457735,15.1586557 14.2270672,14.2183664 C22.4169766,13.278077 33.4626608,15.3365483 35.6013468,21.1307638 Z"
+                          id="Path"
+                          fill-opacity="0.1"
+                          fill="#026CDF"
+                          fill-rule="nonzero"
+                          mask="url(#mask-2)"
+                        ></path>
+                        <path
+                          d="M34.5,16.6078633 C34.5,7.29178316 23.6304348,8.38779259 22,12.7718303 C20.3695652,8.38779259 9.5,7.29178316 9.5,16.6078633 C9.5,24.2799293 17.6521739,28.663967 22,32.5 C26.3478261,28.663967 34.5,24.2799293 34.5,16.6078633 Z"
+                          id="Stroke"
+                          stroke="#026CDF"
+                          fill="#026CDF"
+                          stroke-linejoin="round"
+                          mask="url(#mask-2)"
+                        ></path>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+              <!-- 中內容 -->
+              <div class="d-flex flex-column justify-content-between">
+                <div>
+                  <p class="d-inline fw-bolder">Pick Your Favorites</p>
+                  <p class="qtContent">
+                    Pick your favorites for the best way to know what’s
+                    happening live near you.
+                  </p>
+                </div>
+                <div>
+                  <a href="#" class="btn btn-outline-primary rounded-0 py-0"
+                    >Pick Favorites</a
+                  >
+                </div>
+              </div>
+            </div>
+            <!-- 右 -->
+            <div class="col-12 col-lg-4 d-flex">
+              <!-- 右ico -->
+              <div class="qt pe-4">
+                <svg
+                  width="42px"
+                  height="42px"
+                  viewBox="0 0 42 42"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <title>Payment info icon</title>
+                  <defs>
+                    <rect id="path-1" x="0" y="0" width="44" height="44"></rect>
+                  </defs>
+                  <g
+                    id="Page-1"
+                    stroke="none"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                  >
+                    <g
+                      id="Account-Overview"
+                      transform="translate(-1869.000000, -818.000000)"
+                    >
+                      <g
+                        id="icon"
+                        transform="translate(1868.000000, 817.000000)"
+                      >
+                        <mask id="mask-2" fill="white">
+                          <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Bounds"></g>
+                        <g
+                          mask="url(#mask-2)"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <g transform="translate(1.000000, 1.000000)">
+                            <g
+                              id="Group-7"
+                              stroke="none"
+                              fill-rule="evenodd"
+                              transform="translate(3.500000, 4.500000)"
+                            >
+                              <path
+                                d="M8.00245535,6 C8.55338405,6 9,5.54902482 9,5.00922203 L9,0.990777969 C9,0.443586406 8.5536886,0 8.00245535,0 L0.997544646,0 C0.446615951,0 4.54747351e-13,0.45097518 4.54747351e-13,0.990777969 L4.54747351e-13,5.00922203 C4.54747351e-13,5.55641359 0.446311399,6 0.997544646,6 L8.00245535,6 Z"
+                                id="Stroke-850"
+                                stroke="#515961"
+                              ></path>
+                              <polyline
+                                id="Stroke-850"
+                                stroke="#515961"
+                                points="2 0 3 2 0 2"
+                              ></polyline>
+                              <polyline
+                                id="Stroke-850"
+                                stroke="#515961"
+                                points="3 2 3 4 0 4"
+                              ></polyline>
+                              <path
+                                d="M9,4 L6,4"
+                                id="Stroke-850"
+                                stroke="#515961"
+                              ></path>
+                              <path
+                                d="M9,2 L6,2"
+                                id="Stroke-850"
+                                stroke="#515961"
+                              ></path>
+                              <polyline
+                                id="Stroke-850"
+                                stroke="#515961"
+                                points="7 0 6 2.03745255 6 4 7 6"
+                              ></polyline>
+                            </g>
+                            <path
+                              d="M19.5,26.5 L4.50619478,26.5 C2.2936345,26.5 0.5,24.7129147 0.5,22.4944797 L0.5,4.50552025 C0.5,2.2933325 2.2837733,0.5 4.49789262,0.5 L31.5021074,0.5 C33.7100825,0.5 35.5,2.28747387 35.5,4.50619478 L35.5,19.5"
+                              id="Stroke-847"
+                              stroke="#515961"
+                            ></path>
+                            <path
+                              d="M8.5,15.5 L3.5,15.5"
+                              id="Stroke-850"
+                              stroke="#515961"
+                            ></path>
+                            <path
+                              d="M16.5,15.5 L11.5,15.5"
+                              id="Stroke-850"
+                              stroke="#515961"
+                            ></path>
+                            <path
+                              d="M24.5,15.5 L19.5,15.5"
+                              id="Stroke-850"
+                              stroke="#515961"
+                            ></path>
+                            <path
+                              d="M32.5,15.5 L27.5,15.5"
+                              id="Stroke-850"
+                              stroke="#515961"
+                            ></path>
+                            <path
+                              d="M12.5,20.5 L3.5,20.5"
+                              id="Stroke-851"
+                              stroke="#515961"
+                            ></path>
+                          </g>
+                        </g>
+                        <path
+                          d="M38.4965506,28.4916066 C32.9245773,35.7300616 10.8795304,35.8700704 5.42898026,28.7016198 C-0.0215698904,21.54717 11.1088852,7.07025983 22.1314087,7.00025543 C33.1539321,6.93025103 44.0685239,21.2671524 38.4965506,28.4916066 Z"
+                          id="Path"
+                          fill-opacity="0.1"
+                          fill="#026CDF"
+                          fill-rule="nonzero"
+                          mask="url(#mask-2)"
+                        ></path>
+                        <g id="Group-5" mask="url(#mask-2)">
+                          <g transform="translate(22.500000, 22.500000)">
+                            <circle
+                              id="Oval"
+                              stroke="#026CDF"
+                              fill="#026CDF"
+                              fill-rule="evenodd"
+                              cx="10"
+                              cy="10"
+                              r="10"
+                            ></circle>
+                            <polyline
+                              id="Stroke-850"
+                              stroke="#FFFFFF"
+                              fill="none"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              points="15 6 9 13.5 5 10"
+                            ></polyline>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+              <!-- 右內容 -->
+              <div class="d-flex flex-column justify-content-between">
+                <div>
+                  <p class="d-inline fw-bolder">Fast and Easy Checkout</p>
+                  <p class="qtContent">
+                    Expired payment info can block you at checkout. Be sure it’s
+                    up to date.
+                  </p>
+                </div>
+                <div>
+                  <a href="#" class="btn btn-outline-primary rounded-0 py-0"
+                    >Update Payment</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sell Your Tickets on Ticketmaster -->
+          <div class="row align-items-center mt-5">
+            <div class="col-12 col-lg-10">
+              <p class="fw-bolder fs-5 mb-0">
+                Sell Your Tickets on Ticketmaster
+              </p>
+            </div>
+            <div class="col-12 col-lg-2">
+              <div class="d-flex justify-content-lg-end">
+                <a href="#" class="viewAll">View All</a>
+              </div>
+            </div>
+          </div>
+          <!-- The Safest Way to Sell Your Tickets...... -->
+
+          <ul class="list-group shadow-sm mt-3">
+            <li class="list-group-item">
+              <div class="row justify-content-between align-items-center">
+                <div class="col-12 col-lg-10">
+                  <h5 class="mb-1 my-4 fw-bolder">
+                    The Safest Way to Sell Your Tickets. Only With Ticketmaster.
+                  </h5>
+                  <p class="mb-1 text-secondary py-4">
+                    Sell your tickets in a safe and simple way, and instantly
+                    reach millions of fans who need seats.
+                  </p>
+                </div>
+                <div class="col-12 col-lg-2">
+                  <a href="#" class="btn btn-primary rounded-0">Learn More</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <div>
+            <!-- Events We Think You’ll Love -->
+            <div class="row mt-5">
+              <div class="col-12 col-lg-10">
+                <div class="d-flex align-items-baseline">
+                  <p class="fw-bolder fs-5 me-2 mb-0">
+                    Events We Think You’ll Love
+                  </p>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    href="#"
+                    data-bs-toggle="tooltip"
+                    data-bs-title="Event recommendations are based on your favorites, events you've attended, and popular events near you. Add and manage your favorite teams, artists and more, to personalize your recommendations."
+                    data-bs-placement="bottom"
+                    data-bs-custom-class="custom-tooltip"
+                  >
+                    <g fill="none" fill-rule="evenodd">
+                      <path d="M0 0h16v16H0z"></path>
+                      <path
+                        fill="#026cdf"
+                        d="M8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12zm0 1A7 7 0 1 1 8 1a7 7 0 0 1 0 14zM8 5a.75.75 0 1 0 0-1.5A.75.75 0 0 0 8 5zm0 7.5a.75.75 0 0 0 .75-.75v-4.5a.75.75 0 0 0-1.5 0v4.5c0 .414.336.75.75.75z"
+                      ></path>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+              <div class="col-12 col-lg-2">
+                <div class="d-flex justify-content-lg-end">
+                  <a href="#" class="text-nowrap">Add Favorites</a>
+                </div>
+              </div>
+            </div>
+            <!-- card放置區 -->
+            <div class="row">
+              <!-- 左 -->
+              <div class="col-12 col-lg-4">
+                <a href="">
+                  <div class="card shadow-sm">
+                    <div class="beyonce d-flex flex-column">
+                      <img
+                        src="./_medium.webp"
+                        class="card-img-top w-100"
+                        alt="Beyonce"
+                      />
+                      <div class="EventsGp">
+                        <div class="Events px-2 py-1">
+                          <p class="m-0 p-0 fw-bolder">Beyoncé</p>
+                          <p class="m-0 p-0">8 Events</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <a href="#" class="d-flex text-black">
+                        <div class="eventsDate pe-2">
+                          <p class="eventsDatepurple m-0">Aug 9</p>
+                          <p class="m-0 text-nowrap text-secondary">
+                            Wed • 8:00 PM
+                          </p>
+                        </div>
+                        <div class="eventsInfo ps-2">
+                          <p class="eventsInfo m-0">
+                            Charlotte, NC - Bank of America Stadium
+                          </p>
+                          <p class="eventsInfo m-0 text-secondary">
+                            BEYONCÉ - RENAISSANCE WORLD TOUR
+                          </p>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <!-- 中 -->
+              <div class="col-12 col-lg-4">
+                <a href="">
+                  <div class="card shadow-sm">
+                    <div class="beyonce d-flex flex-column">
+                      <img
+                        src="./d22e79fb-1ce3-4919-ba33-9fe0032b69a5_1343211_TABLET_LANDSCAPE_LARGE_16_9.webp"
+                        class="card-img-top w-100"
+                        alt="Seattle Mariners"
+                      />
+                      <div class="EventsGp">
+                        <div class="Events px-2 py-1">
+                          <p class="m-0 p-0 fw-bolder">Seattle Mariners</p>
+                          <p class="m-0 p-0">10 Events</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <a href="#" class="d-flex text-black">
+                        <div class="eventsDate pe-2">
+                          <p class="eventsDatepurple m-0">Aug 11</p>
+                          <p class="m-0 text-nowrap text-secondary">
+                            Fri • 7:10 PM
+                          </p>
+                        </div>
+                        <div class="eventsInfo ps-2">
+                          <p class="eventsInfo m-0">
+                            Seattle, WA - T-Mobile Park
+                          </p>
+                          <p class="eventsInfo m-0 text-secondary">
+                            Seattle Mariners vs. Baltimore Orioles
+                          </p>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="col-12 col-lg-4">
+                <!-- 右 -->
+                <a href="">
+                  <div class="card shadow-sm">
+                    <div class="beyonce d-flex flex-column">
+                      <img
+                        src="./97b67038-f926-4676-be88-ebf94cb5c7d5_1802151_TABLET_LANDSCAPE_LARGE_16_9.webp"
+                        class="beyonce card-img-top w-100"
+                        alt="Ed Sheeran"
+                      />
+                      <div class="EventsGp">
+                        <div class="Events px-2 py-1">
+                          <p class="m-0 p-0 fw-bolder">Ed Sheeran</p>
+                          <p class="m-0 p-0">7 Events</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <a href="#" class="d-flex text-black">
+                        <div class="eventsDate pe-2">
+                          <p class="eventsDatepurple m-0">Aug 5</p>
+                          <p class="m-0 text-nowrap text-secondary">
+                            Sat • 6:00 PM
+                          </p>
+                        </div>
+                        <div class="eventsInfo ps-2">
+                          <p class="eventsInfo m-0">
+                            Kansas City, MO - GEHA Field at Arrowhead Stadium
+                          </p>
+                          <p class="eventsInfo m-0 text-secondary">
+                            Ed Sheeran: +-=÷x Tour
+                          </p>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- GET EVENT NEWS YOU WANT -->
+          <ul class="list-group shadow-sm mt-5">
+            <li
+              class="list-group-item d-flex align-items-center justify-content-center"
+            >
+              <div class="hiddenblockInMd px-4 py-3">
+                <svg
+                  width="70px"
+                  height="70px"
+                  viewBox="0 0 42 40"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <title>Subscription icon</title>
+                  <defs>
+                    <rect id="path-1" x="0" y="0" width="44" height="44"></rect>
+                  </defs>
+                  <g
+                    id="Page-1"
+                    stroke="none"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                  >
+                    <g
+                      id="Account-Overview"
+                      transform="translate(-1869.000000, -640.000000)"
+                    >
+                      <g
+                        id="Group-236"
+                        transform="translate(1868.000000, 638.000000)"
+                      >
+                        <mask id="mask-2" fill="white">
+                          <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Bounds"></g>
+                        <g
+                          id="icon"
+                          mask="url(#mask-2)"
+                          stroke="#515961"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <g transform="translate(1.000000, 2.000000)">
+                            <path
+                              d="M20.5,19.5 L20.5,21.5 C20.5,22.6045695 19.6045695,23.5 18.5,23.5 L2.5,23.5"
+                              id="Stroke-406"
+                              transform="translate(11.500000, 21.500000) scale(-1, 1) translate(-11.500000, -21.500000) "
+                            ></path>
+                            <path
+                              d="M2.5,17.5 L2.5,2.5 C2.5,1.3954305 3.3954305,0.5 4.5,0.5 L31.5,0.5 C32.6045695,0.5 33.5,1.3954305 33.5,2.5 L33.5,9.5"
+                              id="Stroke-406"
+                              transform="translate(18.000000, 9.000000) scale(-1, 1) translate(-18.000000, -9.000000) "
+                            ></path>
+                            <polyline
+                              id="Stroke-407"
+                              points="33.5 2.5 18 12.5 2.5 2.5"
+                            ></polyline>
+                            <path
+                              d="M9.5,16 L9.26776695,16.232233 C8.25342987,17.2465701 6.64759141,17.3606936 5.5,16.5 L5.5,16.5 C4.38546706,15.6641003 2.80856639,15.864292 1.93826238,16.952172 L1.5,17.5"
+                              id="Stroke-407"
+                            ></path>
+                            <path
+                              d="M10.5,11.5 L10.5,11.5 C9.4550922,13.0673617 7.33742937,13.4908943 5.77006767,12.4459865 C5.71756347,12.4109837 5.66604074,12.3745306 5.61555898,12.3366692 L5.5,12.25 C4.03735853,11.1530189 1.96237446,11.4494452 0.865393353,12.9120867 C0.783033033,13.0219004 0.707582583,13.1367305 0.639478981,13.2559118 L0.5,13.5"
+                              id="Stroke-407"
+                            ></path>
+                          </g>
+                        </g>
+                        <path
+                          d="M41.2431885,33.5610626 C37.1317771,41.4341847 15.2810428,38.2225382 8.47594796,28.7344167 C1.6708531,19.2646475 9.91139765,3.500051 20.8456256,5.11505041 C31.7621319,6.71169754 45.3723216,25.6879405 41.2431885,33.5610626 Z"
+                          id="Path"
+                          fill-opacity="0.1"
+                          fill="#026CDF"
+                          fill-rule="nonzero"
+                          mask="url(#mask-2)"
+                          transform="translate(24.000000, 21.500000) scale(-1, 1) translate(-24.000000, -21.500000) "
+                        ></path>
+                        <g id="Group-5" mask="url(#mask-2)">
+                          <g transform="translate(22.500000, 21.500000)">
+                            <circle
+                              id="Oval"
+                              stroke="#026CDF"
+                              fill="#026CDF"
+                              fill-rule="evenodd"
+                              cx="10"
+                              cy="10"
+                              r="10"
+                            ></circle>
+                            <polyline
+                              id="Stroke-850"
+                              stroke="#FFFFFF"
+                              fill="none"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              points="15 6 9 13.5 5 10"
+                            ></polyline>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+              <div class="row justify-content-between align-items-center">
+                <div class="genyw col-12 col-lg-8">
+                  <p class="genywTitle pt-2">GET EVENT NEWS YOU WANT</p>
+                  <p class="mb-1">
+                    When you tell us who you love, we can tell you what they’re
+                    up to. Customize your subscriptions to get the latest,
+                    breaking news about all things live.
+                  </p>
+                </div>
+                <div class="col-12 col-lg-4">
+                  <a
+                    href="#"
+                    class="btn btn-outline-primary rounded-0 fw-bolder text-nowrap"
+                    >Customize Subscriptions</a
+                  >
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div>
+      <br />
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const tooltipTriggerList = document.querySelectorAll(
+        '[data-bs-toggle="tooltip"]'
+      );
+      const tooltipList = [...tooltipTriggerList].map(
+        (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+      );
+
+      const popoverTriggerList = document.querySelectorAll(
+        '[data-bs-toggle="popover"]'
+      );
+      const popoverList = [...popoverTriggerList].map(
+        (popoverTriggerEl) => new bootstrap.Popover(popoverTriggerEl)
+      );
+    </script>
+  </body>
+</html>
