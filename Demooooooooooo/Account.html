@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Account Overview</title>
+    <!-- <link rel="stylesheet" href="./reset.css" /> -->
     <!-- bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -31,6 +32,67 @@
         margin: 0;
         padding: 0;
       }
+      /* Johnson */
+      .navbar {
+        background-image: linear-gradient(
+          256deg,
+          rgb(0, 45, 161),
+          rgb(2, 108, 223) 55%,
+          rgb(0, 45, 161)
+        );
+        width: 100%;
+      }
+      .navbar a {
+        color: white;
+      }
+
+      .inputform input::placeholder {
+        font-size: 14px;
+        color: black;
+      }
+
+      .outerlink a {
+        font-size: 10px;
+        text-decoration: none;
+      }
+
+      .inputform div,
+      .inputform input {
+        border: none;
+        background-color: white;
+        opacity: 0.5;
+        padding: 5px;
+      }
+
+      .inputform input {
+        border-radius: 0 200px 200px 0;
+        outline: none;
+      }
+
+      .inputform div {
+        border-radius: 200px 0 0 200px;
+      }
+
+      .inputform input:focus {
+        box-shadow: none;
+      }
+      .navbar-collapse ul li {
+        transition: 0.7s;
+      }
+
+      .navbar-collapse ul li:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar-nav li:hover a {
+        color: white;
+        /* 保留連結內文字的原始顏色 */
+      }
+      .personIcon {
+        fill: #fff;
+      }
+      /* Johnson */
+      /* Will Start*/
       a {
         text-decoration: none;
       }
@@ -111,6 +173,185 @@
       .custom-tooltip .tooltip-arrow::before {
         border-bottom-color: #4444447c !important;
       }
+      /* Will */
+      /* Ricky */
+      .background {
+        width: 100vw;
+        background-color: rgb(31, 38, 45);
+        background-size: cover;
+      }
+      .background * {
+        color: white;
+      }
+
+      .searchbox *:not(h1):not(h2) {
+        color: black;
+      }
+
+      .list-unstyled {
+        display: none;
+      }
+
+      /* .footermark {
+        display: none;
+      } */
+
+      .footerspan :first-child {
+        display: inline;
+      }
+
+      .footerspan :last-child {
+        font-size: 14px;
+        text-decoration: none;
+        font-weight: bolder;
+      }
+
+      .footerprivacy :first-child {
+        font-size: 14px;
+        text-decoration: none;
+        font-weight: bolder;
+      }
+
+      .footerprivacy :last-child {
+        display: inline;
+      }
+
+      .footertext {
+        font-size: 12px;
+      }
+
+      .footericon {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .footertext .fa-solid {
+        display: none;
+      }
+
+      .footerpersonalinfo :first-child {
+        display: flex;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: bolder;
+        text-decoration: none;
+      }
+
+      /* ----------------footer css---------------- */
+
+      swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      swiper-slide img {
+        width: 100%;
+        object-fit: cover;
+      }
+
+      swiper-container {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .swiperbtn {
+        position: absolute;
+        left: px;
+      }
+
+      @media (min-width: 992px) {
+        .ticket img {
+          vertical-align: top;
+          transition: 1s;
+          transform: scale(1);
+        }
+
+        .ticket:hover img {
+          transform: scale(1.2);
+        }
+
+        .ticket {
+          position: relative;
+          border: none;
+        }
+
+        .pic-text {
+          position: absolute;
+          background-color: black;
+          bottom: 5px;
+          left: 16px;
+          opacity: 0.6;
+          width: fit-content;
+        }
+
+        .pic-text :first-child {
+          padding: 3px 0px 0px 0px;
+          font-size: 16px;
+          color: white;
+        }
+
+        .pic-text :nth-child(2) {
+          padding: 0px 0px 3px 0px;
+          font-size: 14px;
+          color: white;
+        }
+
+        .drug {
+          width: 24%;
+          margin-left: 1%;
+        }
+
+        .list-unstyled {
+          display: block;
+        }
+
+        .list-unstyled :first-child {
+          margin-top: 50px;
+          font-size: 16px;
+          font-weight: bold;
+        }
+
+        .list-unstyled li {
+          margin-top: 10px;
+          font-size: 14px;
+        }
+
+        .footermark {
+          position: absolute;
+          top: 5%;
+          right: -5%;
+          display: inline;
+          font-size: 30px;
+          font-weight: bolder;
+        }
+
+        .footertext {
+          position: relative;
+        }
+
+        .footericon {
+          position: absolute;
+          top: 15%;
+          right: -50%;
+          margin-top: 10px;
+          display: inline;
+        }
+
+        .footertext .fa-solid {
+          display: inline;
+          position: absolute;
+          top: 60%;
+        }
+        .footer-span {
+          border-top: 1px solid white;
+        }
+      }
+      /* Ricky */
       @media screen and (min-width: 768px) {
         .accountNameYear {
           text-align: center;
@@ -137,10 +378,103 @@
         .hiddenblockInMd {
           display: none;
         }
+        .footericon {
+          display: none;
+        }
       }
     </style>
   </head>
   <body>
+    <!--  -->
+    <nav class="navbar navbar-expand-lg sticky-top bg-primary">
+      <div class="container-fluid px-5 mx-5">
+        <a class="navbar-brand" href="#">TicketMonster</a>
+        <!-- 搜尋 -->
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse bg-md-transparent" id="mainNavbar">
+          <form class="inputform d-flex pt-2" role="search">
+            <div><i class="fa-solid fa-magnifying-glass"></i></div>
+            <!-- !長度控制不佳 -->
+            <input
+              class="form-control"
+              type="search"
+              placeholder="Find millions of live experiences"
+              aria-label="search"
+            />
+          </form>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item hover">
+              <a class="nav-link" href="#">Concerts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sports</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">Art & Theater</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                More
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item link-dark" href="#">Family</a></li>
+                <li><a class="dropdown-item link-dark" href="#">Deals</a></li>
+                <li>
+                  <a class="dropdown-item link-dark" href="#"
+                    >Entertainment Guides</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <g fill="none" fill-rule="evenodd">
+              <path d="M24 0H0v24h24z"></path>
+              <path
+                class="personIcon"
+                fill="#262626"
+                fill-opacity="1"
+                fill-rule="nonzero"
+                d="M12 23C5.925 23 1 18.075 1 12S5.925 1 12 1s11 4.925 11 11-4.925 11-11 11zm0-1c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0-8a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-1a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 7.5a.5.5 0 1 1-1 0V19a6 6 0 1 1 12 0v1.5a.5.5 0 1 1-1 0V19a5 5 0 0 0-10 0v1.5z"
+              ></path>
+            </g>
+          </svg>
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="#">XU </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">Help </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <!-- 會員中心標題 -->
     <div class="container py-4">
       <div class="row">
@@ -732,7 +1066,7 @@
 
           <div>
             <!-- Events We Think You’ll Love -->
-            <div class="row mt-5">
+            <div class="row mt-5 mb-4">
               <div class="col-12 col-lg-10">
                 <div class="d-flex align-items-baseline">
                   <p class="fw-bolder fs-5 me-2 mb-0">
@@ -773,7 +1107,7 @@
                   <div class="card shadow-sm">
                     <div class="beyonce d-flex flex-column">
                       <img
-                        src="./1.webp"
+                        src="./_medium.webp"
                         class="card-img-top w-100"
                         alt="Beyonce"
                       />
@@ -1009,9 +1343,151 @@
         </div>
       </div>
     </div>
-    <div>
+    <!-- <div>
       <br />
+    </div> -->
+    <div class="background">
+      <!-- footer list -->
+      <div class="container mt-5">
+        <div class="row col-10 mx-auto">
+          <div class="col-3">
+            <ul class="list-unstyled">
+              <li class="fw-bolder mb-3">We're Here to Help</li>
+              <li>Ticket Your Event</li>
+              <li>FAQs</li>
+              <li>Refunds and Exchanges</li>
+              <li>Contact Us</li>
+              <li>Gift Cards</li>
+              <li>Do Not Sell or Share My Personal Information</li>
+            </ul>
+          </div>
+          <div class="col-3">
+            <ul class="list-unstyled">
+              <li class="fw-bolder mb-3">Our Network</li>
+              <li>Live Nation</li>
+              <li>House of Blues</li>
+              <li>Front Gate Tickets</li>
+              <li>TicketWeb</li>
+              <li>TicketsNow</li>
+              <li>universe</li>
+              <li>NFL Ticket Exchange</li>
+              <li>NBATICKETS.com</li>
+              <li>NHL Ticket Exchange</li>
+            </ul>
+          </div>
+          <div class="col-3">
+            <ul class="list-unstyled">
+              <li class="fw-bolder mb-3">About Us</li>
+              <li>Who We Are</li>
+              <li>Insider Blog</li>
+              <li>Work With Us</li>
+              <li>Across the Globes</li>
+              <li>Innovation</li>
+              <li>Developer</li>
+              <li>Privacy Policy</li>
+            </ul>
+          </div>
+          <div class="col-3">
+            <ul class="list-unstyled">
+              <li class="fw-bolder mb-3">Friends & Partners</li>
+              <li>PayPal</li>
+              <li>Allianz</li>
+              <li>AWS</li>
+              <li>
+                <span>Get Our App</span>
+                <a href="#" class="px-1"><i class="fa-brands fa-apple"></i></a>
+
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.ticketmaster.mobile.android.na"
+                  class="px-1"
+                  ><div class="d-inline align-top">
+                    <svg viewBox="0 0 48 48" width="15" height="15">
+                      <g>
+                        <path
+                          fill="#4DB6AC"
+                          d="M 7.703125 4.042969 C 7.292969 4.148438 7 4.507813 7 5.121094 C 7 6.921875 7 23.914063 7 23.914063 C 7 23.914063 7 42.28125 7 43.089844 C 7 43.535156 7.195313 43.835938 7.5 43.945313 L 27.679688 23.882813 Z "
+                        ></path>
+                        <path
+                          fill="#DCE775"
+                          d="M 33.238281 18.359375 L 24.929688 13.5625 C 24.929688 13.5625 9.683594 4.761719 8.789063 4.242188 C 8.402344 4.019531 8.019531 3.960938 7.703125 4.042969 L 27.683594 23.882813 Z "
+                        ></path>
+                        <path
+                          fill="#D32F2F"
+                          d="M 8.417969 43.800781 C 8.949219 43.492188 23.699219 34.976563 33.28125 29.445313 L 27.679688 23.882813 L 7.5 43.945313 C 7.746094 44.039063 8.066406 44.003906 8.417969 43.800781 Z "
+                        ></path>
+                        <path
+                          fill="#FBC02D"
+                          d="M 41.398438 23.070313 C 40.601563 22.640625 33.296875 18.394531 33.296875 18.394531 L 33.238281 18.359375 L 27.679688 23.882813 L 33.28125 29.445313 C 37.714844 26.886719 41.042969 24.964844 41.339844 24.792969 C 42.285156 24.246094 42.195313 23.5 41.398438 23.070313 Z "
+                        ></path>
+                      </g>
+                    </svg></div
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- footer list -->
+
+      <!-- footer span -->
+      <!-- <div class="container mt-5 py-4 footer-span">
+        <div class="row mx-auto justify-content-between footertext">
+          <div class="footermark">Ticketmonster</div>
+          <div class="footerspan text-center">
+            <p>By continuing past this page, you agree to our</p>
+            <a href="#"> Terms of Use.</a>
+          </div>
+          <div class="footerprivacy text-center">
+            <a href="#">Privacy Policy</a>
+            <p>© 1999-2023 Ticketmonster. All rights reserved.</p>
+          </div>
+          <div class="footerpersonalinfo mb-3">
+            <a href="#">Do Not Sell or Share My Personal Information </a>
+          </div>
+          <div class="row col-10 mx-auto d-flex">
+            <div class="fa-solid fa-earth-asia">Tawian</div>
+          </div>
+          <div class="footericon col-9 mx-auto mb-3">
+            <i class="fa-brands fa-facebook-f me-3"></i>
+            <i class="fa-brands fa-instagram me-3"></i>
+            <i class="fa-brands fa-twitter me-3"></i>
+            <i class="fa-brands fa-youtube me-3"></i>
+            <i class="fa-brands fa-linkedin-in me-3"></i>
+          </div>
+        </div>
+      </div> -->
+      <!-- footer span -->
+      <!--  -->
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="footer-span d-flex justify-content-between mt-4 py-3">
+              <div
+                class="col-9 d-flex align-items-center justify-content-around"
+              >
+                <a href="#" class="fs-5 fw-bolder hiddenblockInCol"
+                  >ticketmonster<i class="fa-regular fa-registered fs-6"></i>
+                </a>
+                <p class="fs-6 px-3 m-0">
+                  By continuing past this page, you agree to our Terms of Use.
+                </p>
+                <p class="m-0">©Ticketmaster 2023</p>
+              </div>
+              <div class="col-3 justify-content-around hiddenblockInCol">
+                <a href="#"><i class="fa-brands fa-facebook p-3"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram p-3"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin p-3"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube p-3"></i></a>
+                <a href="#"><i class="fa-solid fa-comment p-3"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--  -->
     </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
